@@ -15,6 +15,31 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 /**
+ * Galaxy
+ */
+const parameters = {}
+parameters.count = 1000;
+
+const generateGalaxy = () => {
+    const gemetry = new THREE.BufferGeometry();
+
+    const positions = new Float32Array(parameters.count * 3);
+
+    for (let i = 0; i < parameters.count; i++) {
+        const i3 = i * 3;
+        const x = 0;
+        const y = 1;
+        const z = 2;
+
+        positions[i3 + x] = Math.random();
+        positions[i3 + y] = Math.random();
+        positions[i3 + z] = Math.random();
+    }
+}
+
+generateGalaxy();
+
+/**
  * Sizes
  */
 const sizes = {
