@@ -21,7 +21,7 @@ const parameters = {}
 parameters.count = 1000;
 
 const generateGalaxy = () => {
-    const gemetry = new THREE.BufferGeometry();
+    const geometry = new THREE.BufferGeometry();
 
     const positions = new Float32Array(parameters.count * 3);
 
@@ -35,6 +35,8 @@ const generateGalaxy = () => {
         positions[i3 + y] = Math.random();
         positions[i3 + z] = Math.random();
     }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
 }
 
 generateGalaxy();
