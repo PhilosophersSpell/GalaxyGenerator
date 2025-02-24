@@ -30,6 +30,7 @@ const generateGalaxy = () => {
      * Destroy old galaxy
      */
     if (points !== null) {
+        // dispose 를 안해줘도 동일하게 동작하고 결국 다른 변수가 기존 값을 가리키지 않으면 GC에 의해 메모리에서 정리되겠지만, dispose로 명시적으로 메모리 정리해주는게 좋겠다. 습관도 들일겸.
         geometry.dispose();
         material.dispose();
         scene.remove(points);
