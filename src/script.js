@@ -21,6 +21,7 @@ const parameters = {}
 parameters.count = 100000;
 parameters.size = 0.01;
 parameters.radius = 5;
+parameters.branches = 3;
 
 let geometry = null;
 let material = null;
@@ -45,14 +46,15 @@ const generateGalaxy = () => {
         const i3 = i * 3;
 
         const radius = Math.random() * parameters.radius;
+        const branchAngle = (i % parameters.branches) / parameters.branches * Math.PI * 2;
 
         const x = 0;
         const y = 1;
         const z = 2;
 
-        positions[i3 + x] = radius;
+        positions[i3 + x] = Math.cos(branchAngle) * radius;
         positions[i3 + y] = 0;
-        positions[i3 + z] = 0;
+        positions[i3 + z] = Math.sin(branchAngle) * radius;
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
@@ -79,6 +81,7 @@ generateGalaxy();
 gui.add(parameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateGalaxy);
 gui.add(parameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(generateGalaxy);
 gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateGalaxy);
+gui.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange(generateGalaxy);
 
 /**
  * Sizes
