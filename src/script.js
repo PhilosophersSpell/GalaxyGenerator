@@ -73,7 +73,7 @@ const generateGalaxy = () => {
 
         // Color
         const mixedColor = colorInside.clone();
-        mixedColor.lerp(colorOutside, 0.5);
+        mixedColor.lerp(colorOutside, radius / parameters.radius);
 
         const R = 0;
         const G = 1;
